@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #F5D7AC;
+  color: #BB3B24;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #BB3B24;
+  letter-spacing: 0.04em;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+}
+
+.card {
+  background: #FFFFFF;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  padding: 3rem;
+  border-radius: 1.5rem;
+}
+
+.btn-pink {
+  background: #D64091;
+  color: #fff;
+  border-radius: 9999px;
+  padding: 0.75rem 2rem;
+  font-weight: 600;
+  font-size: 1.125rem;
+  transition: background 0.2s;
+}
+
+.btn-orange {
+  background: #F27405;
+  color: #fff;
+  border-radius: 9999px;
+  padding: 0.75rem 2rem;
+  font-weight: 600;
+  font-size: 1.125rem;
+  transition: background 0.2s;
+}
+
+section {
+  margin-bottom: 6rem;
+}
+
+@font-face {
+  font-family: 'Hatton';
+  src: url('/fonts/hatton/PP Hatton Bold 700.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
