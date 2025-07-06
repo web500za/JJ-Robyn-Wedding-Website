@@ -1,4 +1,4 @@
-{DB0223E5-A1D6-42D4-8C49-7EA364F5B080}.pngimport { useState } from 'react';
+import { useState } from 'react';
 
 function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
