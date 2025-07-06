@@ -21,8 +21,19 @@ h1, h2, h3, h4, h5, h6 {
 .card {
   background: #FFFFFF;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  padding: 3rem;
+  padding: 1.25rem; /* 20px for mobile */
   border-radius: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .card {
+    padding: 2rem; /* 32px for sm screens */
+  }
+}
+@media (min-width: 768px) {
+  .card {
+    padding: 3rem; /* 48px for md+ screens */
+  }
 }
 
 .btn-pink {
@@ -32,7 +43,17 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0.75rem 2rem;
   font-weight: 600;
   font-size: 1.125rem;
-  transition: background 0.2s;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 2px 6px rgba(214, 64, 145, 0.08);
+}
+.btn-pink:hover, .btn-pink:focus {
+  background: #bb357c;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(214, 64, 145, 0.15);
+}
+.btn-pink:active {
+  background: #a02d6a;
+  transform: scale(0.98);
 }
 
 .btn-orange {
@@ -42,7 +63,17 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0.75rem 2rem;
   font-weight: 600;
   font-size: 1.125rem;
-  transition: background 0.2s;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 2px 6px rgba(242, 116, 5, 0.08);
+}
+.btn-orange:hover, .btn-orange:focus {
+  background: #c95e04;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(242, 116, 5, 0.15);
+}
+.btn-orange:active {
+  background: #a34b03;
+  transform: scale(0.98);
 }
 
 section {

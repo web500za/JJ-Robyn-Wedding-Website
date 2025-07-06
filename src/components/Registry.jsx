@@ -34,7 +34,7 @@ function Registry() {
         >
           {/* Gift Registry Card */}
           <motion.div 
-            className="card flex flex-col justify-between items-center text-center"
+            className="card flex flex-col justify-between items-center text-center transition-transform duration-200 hover:scale-105 hover:shadow-lg"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -58,7 +58,7 @@ function Registry() {
           </motion.div>
           {/* Honeymoon Fund Card */}
           <motion.div 
-            className="card flex flex-col justify-between items-center text-center"
+            className="card flex flex-col justify-between items-center text-center transition-transform duration-200 hover:scale-105 hover:shadow-lg"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
@@ -73,7 +73,7 @@ function Registry() {
             </div>
             {!showHoneymoonFund ? (
               <button
-                className="btn-orange mt-2"
+                className="btn-orange mt-2 transition-transform duration-200 hover:scale-105 hover:shadow"
                 onClick={() => setShowHoneymoonFund(true)}
               >
                 Show Bank Details

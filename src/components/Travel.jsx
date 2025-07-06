@@ -68,7 +68,7 @@ function Travel() {
         {cards.map((card, idx) => (
         <motion.div 
             key={card.title}
-            className="bg-white rounded-2xl shadow-card p-8 flex flex-col items-center text-center h-full"
+            className="card flex flex-col items-center text-center h-full transition-transform duration-200 hover:scale-105 hover:shadow-lg"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: idx * 0.1 }}

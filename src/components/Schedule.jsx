@@ -14,7 +14,7 @@ function Schedule() {
     <section id="schedule" className="flex flex-col items-center px-4">
       <div className="w-full max-w-2xl mx-auto text-center">
         <motion.h2 
-          className="text-4xl md:text-5xl font-serif mb-12"
+          className="text-4xl md:text-5xl font-serif mb-12 tracking-wide text-brown"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -32,7 +32,7 @@ function Schedule() {
           {events.map((event, index) => (
             <motion.div
               key={index}
-              className="flex justify-between items-center py-6 border-b border-brown/10 last:border-b-0"
+              className="flex justify-between items-center py-6 border-b border-brown/10 last:border-b-0 transition-colors duration-200 hover:bg-cream/60 rounded-xl"
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
