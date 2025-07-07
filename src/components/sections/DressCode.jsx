@@ -31,7 +31,7 @@ function DressCode() {
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
         >
-          Garden party elegance • Florals and earth tones • Avoid white or ivory
+          Garden party elegance • Solid colours preferred • No black, white, or beige/cream
         </motion.p>
         {/* Simple toggle with pink only */}
         <motion.div 

@@ -61,7 +61,7 @@ function Registry() {
           >
             <h3 className="text-xl font-serif mb-4 text-white">Honeymoon Fund</h3>
             <p className="text-base leading-relaxed mb-6 text-white/80">
-              Contribute to our honeymoon to Santorini, Greece
+              Contribute to our future honeymoon adventure
             </p>
             
             {!showHoneymoonFund ? (
@@ -81,23 +81,23 @@ function Registry() {
                 <div className="space-y-2 text-sm text-white">
                   <div className="flex justify-between">
                     <span>Bank:</span>
-                    <span className="font-medium">First National Bank</span>
+                    <span className="font-medium">Discovery</span>
                   </div>
                   <div className="flex justify-between">
                     <span>Account Name:</span>
-                    <span className="font-medium">R & J Wedding Fund</span>
+                    <span className="font-medium">JP JANUARY</span>
                   </div>
                   <div className="flex justify-between">
                     <span>Account Number:</span>
-                    <span className="font-medium">1234567890</span>
+                    <span className="font-medium">19738952781</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>Branch Code:</span>
-                    <span className="font-medium">250655</span>
+                    <span>Account Type:</span>
+                    <span className="font-medium">Savings</span>
                   </div>
                   <div className="flex justify-between border-t border-white/20 pt-2 mt-2">
                     <span>Reference:</span>
-                    <span className="font-medium">Your Name</span>
+                    <span className="font-medium">Your Name + Gift</span>
                   </div>
                 </div>
               </motion.div>
