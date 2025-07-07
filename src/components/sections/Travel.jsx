@@ -34,7 +34,7 @@ function Travel() {
               <button 
                 className="text-white px-6 py-2 rounded-lg transition-all duration-200 hover:opacity-90"
                 style={{ backgroundColor: '#F27405' }}
-                onClick={() => window.open('https://goo.gl/maps/example', '_blank')}
+                onClick={() => window.open('https://maps.app.goo.gl/Gx4oZqxac8bLeywD9', '_blank')}
               >
                 View on Map
               </button>
@@ -63,10 +63,16 @@ function Travel() {
           transition={{ duration: 0.6, delay: 0.3 }}
           viewport={{ once: true }}
         >
-          <h3 className="text-xl font-medium mb-6" style={{ color: '#BB3B24' }}>Nearby Accommodation</h3>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto">
+          <div className="mb-8">
+            <div className="w-16 h-px bg-brown mx-auto mb-4" style={{ backgroundColor: '#BB3B24' }}></div>
+            <h3 className="text-2xl font-serif mb-2" style={{ color: '#BB3B24' }}>Nearby Accommodation</h3>
+            <div className="w-16 h-px bg-brown mx-auto" style={{ backgroundColor: '#BB3B24' }}></div>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
             <motion.a 
-              href="#" 
+              href="https://tulbaghhotel.co.za/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg p-4 transition-all duration-300 hover:bg-white/30 hover:border-white/50"
               whileHover={{ y: -2 }}
               style={{ borderColor: 'rgba(187, 59, 36, 0.3)' }}
@@ -74,7 +80,9 @@ function Travel() {
               <div className="text-base font-medium" style={{ color: '#BB3B24' }}>Tulbagh Hotel</div>
             </motion.a>
             <motion.a 
-              href="#" 
+              href="https://rijkscountryhouse.co.za/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg p-4 transition-all duration-300 hover:bg-white/30 hover:border-white/50"
               whileHover={{ y: -2 }}
               style={{ borderColor: 'rgba(187, 59, 36, 0.3)' }}
@@ -82,12 +90,24 @@ function Travel() {
               <div className="text-base font-medium" style={{ color: '#BB3B24' }}>Rijk's Country House</div>
             </motion.a>
             <motion.a 
-              href="#" 
+              href="https://www.lairdsarm.co.za/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg p-4 transition-all duration-300 hover:bg-white/30 hover:border-white/50"
               whileHover={{ y: -2 }}
               style={{ borderColor: 'rgba(187, 59, 36, 0.3)' }}
             >
-              <div className="text-base font-medium" style={{ color: '#BB3B24' }}>Saronsberg Cottages</div>
+              <div className="text-base font-medium" style={{ color: '#BB3B24' }}>Laird's Arm Country Inn</div>
+            </motion.a>
+            <motion.a 
+              href="https://www.montpellier.co.za/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg p-4 transition-all duration-300 hover:bg-white/30 hover:border-white/50"
+              whileHover={{ y: -2 }}
+              style={{ borderColor: 'rgba(187, 59, 36, 0.3)' }}
+            >
+              <div className="text-base font-medium" style={{ color: '#BB3B24' }}>Montpellier de Tulbagh</div>
             </motion.a>
           </div>
         </motion.div>
