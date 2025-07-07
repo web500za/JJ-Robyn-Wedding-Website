@@ -47,12 +47,12 @@ const Hero = () => {
         />
       </motion.div>
 
-      {/* Oak Trees - Mobile: Centered framing like desktop */}
+      {/* Oak Trees - Mobile: Centered framing avoiding header */}
       <motion.div
-        className="lg:hidden absolute left-2 top-1/2 -translate-y-1/2 max-w-32 opacity-50"
+        className="lg:hidden absolute left-1 top-1/2 translate-y-8 max-w-28 opacity-45"
         style={{ filter: 'drop-shadow(0 3px 8px rgba(224, 164, 72, 0.25))', zIndex: 1 }}
         initial={{ opacity: 0, x: -20, scale: 0.9 }}
-        animate={{ opacity: 0.5, x: 0, scale: 1 }}
+        animate={{ opacity: 0.45, x: 0, scale: 1 }}
         transition={{ duration: 1.2, delay: 0.4 }}
       >
         <OptimizedImage
@@ -64,10 +64,10 @@ const Hero = () => {
       </motion.div>
       
       <motion.div
-        className="lg:hidden absolute right-2 top-1/2 -translate-y-1/2 max-w-32 opacity-50"
+        className="lg:hidden absolute right-1 top-1/2 translate-y-8 max-w-28 opacity-45"
         style={{ filter: 'drop-shadow(0 3px 8px rgba(224, 164, 72, 0.25))', zIndex: 1 }}
         initial={{ opacity: 0, x: 20, scale: 0.9 }}
-        animate={{ opacity: 0.5, x: 0, scale: 1 }}
+        animate={{ opacity: 0.45, x: 0, scale: 1 }}
         transition={{ duration: 1.2, delay: 0.4 }}
       >
         <OptimizedImage

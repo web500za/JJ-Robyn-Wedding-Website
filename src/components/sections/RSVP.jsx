@@ -124,7 +124,7 @@ function SimpleRSVPForm() {
 
 function RSVP() {
   return (
-    <section id="rsvp" className="rsvp-section py-16 px-8 text-center">
+    <section id="rsvp" className="rsvp-section py-16 px-8 text-center min-h-screen flex items-center justify-center">
       <div className="max-w-2xl mx-auto">
         <motion.div
           className="mb-12"
