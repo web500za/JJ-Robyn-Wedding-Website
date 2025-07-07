@@ -47,14 +47,15 @@ const Hero = () => {
         />
       </motion.div>
       {/* VISUAL HEADLINE: Quote with improved legibility and elegant gold */}
-      <div className="relative z-10 w-full max-w-4xl mx-auto mb-16 md:mb-20 mt-12">
+      <div className="relative z-10 w-full max-w-5xl mx-auto mb-20 md:mb-24 mt-16">
         <motion.h1
           className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-center leading-tight"
           style={{ 
             fontFamily: 'Hatton, serif',
             color: '#E0A448',
             letterSpacing: '0.02em',
-            fontWeight: '400'
+            fontWeight: '400',
+            lineHeight: '1.1'
           }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -62,12 +63,12 @@ const Hero = () => {
           role="heading"
           aria-level="1"
         >
-          {weddingInfo.quote}
+          "I HAVE FOUND THE ONE<br />WHOM MY SOUL LOVES"
         </motion.h1>
       </div>
       
       {/* Couple names with minimal elegance */}
-      <div className="relative z-10 w-full max-w-3xl mx-auto mb-12 md:mb-16">
+      <div className="relative z-10 w-full max-w-3xl mx-auto mb-16 md:mb-20">
         <motion.h2 
           className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-center"
           style={{
@@ -86,9 +87,9 @@ const Hero = () => {
       </div>
       
       {/* Essential details with minimal design */}
-      <div className="relative z-10 w-full max-w-2xl mx-auto mb-12 md:mb-16">
+      <div className="relative z-10 w-full max-w-2xl mx-auto mb-16 md:mb-20">
         <motion.div 
-          className="text-center space-y-6"
+          className="text-center space-y-4"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
@@ -108,21 +109,43 @@ const Hero = () => {
         </motion.div>
       </div>
       
-      {/* Simple call to action */}
+      {/* RSVP call to action with subtle scroll hint */}
       <motion.div
         className="relative z-10 w-full text-center"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.7 }}
       >
-        <button
+        <motion.button
           onClick={() => scrollToSection('rsvp')}
-          className="text-white font-medium px-8 py-3 text-lg transition-all duration-300 hover:opacity-90 rounded"
-          style={{ backgroundColor: '#F27405' }}
+          className="relative text-white font-serif text-xl px-10 py-4 rounded-lg transition-all duration-300 shadow-lg group overflow-hidden"
+          style={{ backgroundColor: '#E0A448' }}
+          whileHover={{ y: -2, boxShadow: '0 8px 25px rgba(224, 164, 72, 0.3)' }}
+          whileTap={{ y: 0 }}
           aria-label="Navigate to RSVP section"
         >
-          RSVP
-        </button>
+          {/* Subtle brown hint at bottom */}
+          <div 
+            className="absolute bottom-0 left-0 w-full h-1 transition-all duration-300 group-hover:h-2"
+            style={{ backgroundColor: '#BB3B24' }}
+          />
+          
+          {/* Subtle downward arrow */}
+          <span className="inline-flex items-center gap-2">
+            RSVP
+            <motion.svg 
+              width="14" 
+              height="8" 
+              viewBox="0 0 14 8" 
+              fill="currentColor"
+              className="opacity-60"
+              animate={{ y: [0, 2, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <path d="M1 1l6 6 6-6" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+            </motion.svg>
+          </span>
+        </motion.button>
       </motion.div>
     </section>
   );

@@ -4,9 +4,9 @@ import { FaMapMarkerAlt, FaCar, FaBed } from 'react-icons/fa';
 function Travel() {
 
   return (
-    <section id="travel" className="travel-section flex flex-col items-center px-4">
+    <section id="travel" className="travel-section py-16 px-8 text-center">
         <motion.h2 
-        className="text-4xl md:text-5xl font-light mb-12 text-center"
+        className="text-4xl md:text-5xl font-serif mb-12 text-center"
         style={{ color: '#BB3B24' }}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -42,31 +42,58 @@ function Travel() {
           </div>
         </motion.div>
 
-        {/* Travel Information */}
+        {/* Travel distance */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 text-center"
+          className="text-center mb-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
         >
-          <div>
-            <h3 className="text-lg font-medium mb-3" style={{ color: '#BB3B24' }}>Getting There</h3>
-            <div className="space-y-2 text-sm" style={{ color: '#BB3B24', opacity: 0.8 }}>
-              <div><strong>By Car:</strong> 120km from Cape Town (1.5 hours)</div>
-              <div><strong>By Air:</strong> Cape Town Airport (1.5 hours by car)</div>
-            </div>
-          </div>
-          
-          <div>
-            <h3 className="text-lg font-medium mb-3" style={{ color: '#BB3B24' }}>Accommodation</h3>
-            <div className="space-y-1 text-sm" style={{ color: '#BB3B24', opacity: 0.8 }}>
-              <div>Tulbagh Hotel</div>
-              <div>Rijk's Country House</div>
-              <div>Saronsberg Cottages</div>
-            </div>
+          <div className="text-lg font-medium" style={{ color: '#BB3B24', opacity: 0.8 }}>
+            1.5 hours by car from Cape Town
           </div>
         </motion.div>
+
+        {/* Accommodation */}
+        <motion.div
+          className="text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          viewport={{ once: true }}
+        >
+          <h3 className="text-xl font-medium mb-6" style={{ color: '#BB3B24' }}>Nearby Accommodation</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto">
+            <motion.a 
+              href="#" 
+              className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg p-4 transition-all duration-300 hover:bg-white/30 hover:border-white/50"
+              whileHover={{ y: -2 }}
+              style={{ borderColor: 'rgba(187, 59, 36, 0.3)' }}
+            >
+              <div className="text-base font-medium" style={{ color: '#BB3B24' }}>Tulbagh Hotel</div>
+            </motion.a>
+            <motion.a 
+              href="#" 
+              className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg p-4 transition-all duration-300 hover:bg-white/30 hover:border-white/50"
+              whileHover={{ y: -2 }}
+              style={{ borderColor: 'rgba(187, 59, 36, 0.3)' }}
+            >
+              <div className="text-base font-medium" style={{ color: '#BB3B24' }}>Rijk's Country House</div>
+            </motion.a>
+            <motion.a 
+              href="#" 
+              className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg p-4 transition-all duration-300 hover:bg-white/30 hover:border-white/50"
+              whileHover={{ y: -2 }}
+              style={{ borderColor: 'rgba(187, 59, 36, 0.3)' }}
+            >
+              <div className="text-base font-medium" style={{ color: '#BB3B24' }}>Saronsberg Cottages</div>
+            </motion.a>
+          </div>
+        </motion.div>
+        
+        {/* Visual break before next section */}
+        <div className="h-16"></div>
       </div>
     </section>
   );

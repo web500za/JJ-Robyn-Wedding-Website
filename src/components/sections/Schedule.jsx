@@ -77,14 +77,14 @@ function Schedule() {
                   </div>
                   <div 
                     className="text-lg md:text-xl font-medium"
-                    style={{ color: '#FFFFFF', fontFamily: 'Playfair Display, serif' }}
+                    style={{ color: '#BB3B24', fontFamily: 'Playfair Display, serif' }}
                   >
                     {event.title}
                   </div>
                   {event.description && (
                     <div 
                       className="text-sm md:text-base mt-2 font-light"
-                      style={{ color: '#FFFFFF', opacity: 0.8 }}
+                      style={{ color: '#BB3B24', opacity: 0.8 }}
                     >
                       {event.description}
                     </div>
