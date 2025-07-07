@@ -14,7 +14,7 @@ const Hero = () => {
       role="banner"
       aria-label="Wedding announcement hero section"
     >
-      {/* Oak Trees - More pronounced and centered */}
+      {/* Oak Trees - Desktop: Large side trees */}
       <motion.div
         className="hidden lg:block absolute left-0 top-1/3 -translate-y-1/2 max-w-lg opacity-70"
         style={{ filter: 'drop-shadow(0 4px 12px rgba(224, 164, 72, 0.3))', zIndex: 1 }}
@@ -46,6 +46,52 @@ const Hero = () => {
           priority
         />
       </motion.div>
+
+      {/* Oak Trees - Mobile: Smaller decorative elements */}
+      <motion.div
+        className="lg:hidden absolute top-8 left-4 max-w-20 opacity-40"
+        style={{ filter: 'drop-shadow(0 2px 6px rgba(224, 164, 72, 0.2))', zIndex: 1 }}
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 0.4, scale: 1 }}
+        transition={{ duration: 1, delay: 0.5 }}
+      >
+        <OptimizedImage
+          src="/images/oak-left.png"
+          alt="Decorative oak tree illustration"
+          className="w-full h-auto"
+          placeholder="Loading..."
+        />
+      </motion.div>
+      
+      <motion.div
+        className="lg:hidden absolute top-8 right-4 max-w-20 opacity-40"
+        style={{ filter: 'drop-shadow(0 2px 6px rgba(224, 164, 72, 0.2))', zIndex: 1 }}
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 0.4, scale: 1 }}
+        transition={{ duration: 1, delay: 0.5 }}
+      >
+        <OptimizedImage
+          src="/images/oak-right.png"
+          alt="Decorative oak tree illustration"
+          className="w-full h-auto"
+          placeholder="Loading..."
+        />
+      </motion.div>
+
+      <motion.div
+        className="lg:hidden absolute bottom-8 left-1/2 -translate-x-1/2 max-w-24 opacity-30"
+        style={{ filter: 'drop-shadow(0 2px 6px rgba(224, 164, 72, 0.2))', zIndex: 1 }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 0.3, y: 0 }}
+        transition={{ duration: 1, delay: 0.7 }}
+      >
+        <OptimizedImage
+          src="/images/oak-left.png"
+          alt="Decorative oak tree illustration"
+          className="w-full h-auto"
+          placeholder="Loading..."
+        />
+      </motion.div>
       {/* VISUAL HEADLINE: Quote with improved legibility and elegant gold */}
       <div className="relative z-10 w-full max-w-5xl mx-auto mb-20 md:mb-24 mt-16">
         <motion.h1
@@ -70,7 +116,7 @@ const Hero = () => {
       {/* Couple names with minimal elegance */}
       <div className="relative z-10 w-full max-w-3xl mx-auto mb-16 md:mb-20">
         <motion.h2 
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-center"
+          className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-light text-center"
           style={{
             fontFamily: 'Playfair Display, serif',
             color: '#BB3B24',

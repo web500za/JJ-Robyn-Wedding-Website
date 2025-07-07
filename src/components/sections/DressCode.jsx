@@ -98,7 +98,7 @@ function DressCode() {
           viewport={{ once: true }}
         >
           <div className="text-center">
-            <h3 className="text-lg font-medium mb-3" style={{ color: '#E0A448' }}>
+            <h3 className="text-lg font-medium mb-3" style={{ color: '#FFFFFF' }}>
               Weather Note
             </h3>
             <p className="text-base" style={{ color: '#FFFFFF', opacity: 0.9 }}>
