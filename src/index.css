@@ -5,17 +5,19 @@
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background-color: #F5D7AC;
-  color: #BB3B24;
+  background-color: var(--cream);
+  color: var(--deep-red);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: #BB3B24;
-  letter-spacing: 0.04em;
+  color: var(--deep-red);
+  letter-spacing: 0.02em;
   font-family: 'Playfair Display', serif;
   font-weight: 700;
+  line-height: 1.2;
 }
 
 .card {
@@ -37,47 +39,110 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-pink {
-  background: #D64091;
+  background: var(--hot-pink);
   color: #fff;
-  border-radius: 9999px;
+  border-radius: 8px;
   padding: 0.75rem 2rem;
   font-weight: 600;
   font-size: 1.125rem;
-  transition: background 0.2s, transform 0.15s, box-shadow 0.15s;
-  box-shadow: 0 2px 6px rgba(214, 64, 145, 0.08);
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px var(--shadow-pink);
+  border: none;
+  cursor: pointer;
 }
 .btn-pink:hover, .btn-pink:focus {
   background: #bb357c;
-  transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(214, 64, 145, 0.15);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px var(--shadow-pink);
 }
 .btn-pink:active {
   background: #a02d6a;
-  transform: scale(0.98);
+  transform: translateY(0);
 }
 
-.btn-orange {
-  background: #F27405;
+.btn-gold {
+  background: var(--gold);
   color: #fff;
-  border-radius: 9999px;
+  border-radius: 8px;
   padding: 0.75rem 2rem;
   font-weight: 600;
   font-size: 1.125rem;
-  transition: background 0.2s, transform 0.15s, box-shadow 0.15s;
-  box-shadow: 0 2px 6px rgba(242, 116, 5, 0.08);
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px var(--shadow-gold);
+  border: none;
+  cursor: pointer;
 }
-.btn-orange:hover, .btn-orange:focus {
-  background: #c95e04;
-  transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(242, 116, 5, 0.15);
+.btn-gold:hover, .btn-gold:focus {
+  background: #C8941F;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px var(--shadow-gold);
 }
-.btn-orange:active {
-  background: #a34b03;
-  transform: scale(0.98);
+.btn-gold:active {
+  background: #B8841C;
+  transform: translateY(0);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--deep-red);
+  border: 2px solid var(--deep-red);
+  border-radius: 8px;
+  padding: 0.75rem 2rem;
+  font-weight: 600;
+  font-size: 1.125rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.btn-outline:hover, .btn-outline:focus {
+  background: var(--deep-red);
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px var(--shadow-red);
+}
+.btn-outline:active {
+  transform: translateY(0);
 }
 
 section {
-  margin-bottom: 6rem;
+  margin-bottom: 0;
+  padding: 4rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Section-specific backgrounds - simplified */
+.hero-section {
+  background: var(--cream);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.schedule-section {
+  background: #F5D7AC;
+}
+
+.travel-section {
+  background: var(--cream);
+}
+
+.registry-section {
+  background: #D64091;
+}
+
+.rsvp-section {
+  background: #BB3B24;
+}
+
+.dresscode-section {
+  background: #E0A448;
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: 3rem 0;
+  }
 }
 
 @font-face {
@@ -86,4 +151,279 @@ section {
   font-weight: 700;
   font-style: normal;
   font-display: swap;
+}
+
+/* ===== ACCESSIBILITY IMPROVEMENTS ===== */
+
+/* Screen reader only content */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.sr-only:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0.5rem 1rem;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  body {
+    background-color: #FFFFFF;
+    color: #000000;
+  }
+  
+  .card {
+    border: 2px solid #000000;
+  }
+  
+  .btn-pink, .btn-orange {
+    border: 2px solid #000000;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Focus improvements */
+*:focus-visible {
+  outline: 2px solid #D64091;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Better focus for interactive elements */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid #D64091;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(214, 64, 145, 0.2);
+}
+
+/* Skip link styling */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: #D64091;
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  z-index: 100;
+  border-radius: 4px;
+}
+
+.skip-link:focus {
+  top: 6px;
+}
+
+/* ===== MOBILE UX IMPROVEMENTS ===== */
+
+/* Better touch targets */
+@media (max-width: 768px) {
+  button, a, input[type="button"], input[type="submit"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Better spacing for touch */
+  .touch-target {
+    padding: 12px;
+    margin: 4px;
+  }
+}
+
+/* Improved form controls */
+input, textarea, select {
+  font-size: 16px; /* Prevent zoom on iOS */
+  line-height: 1.5;
+  border-radius: 8px;
+  border: 2px solid #BB3B24;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: #D64091;
+  box-shadow: 0 0 0 3px rgba(214, 64, 145, 0.1);
+  outline: none;
+}
+
+/* Better error states */
+input:invalid, textarea:invalid {
+  border-color: #dc2626;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+}
+
+/* ===== ANIMATION PERFORMANCE ===== */
+
+/* Use transform and opacity for animations */
+.animate-optimized {
+  will-change: transform, opacity;
+}
+
+/* Smooth scrolling with better performance */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* ===== LOADING STATES ===== */
+
+.loading-shimmer {
+  background: linear-gradient(90deg, #F5D7AC 25%, #FFFFFF 50%, #F5D7AC 75%);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* ===== PRINT STYLES ===== */
+
+@media print {
+  body {
+    background: white;
+    color: black;
+    font-size: 12pt;
+    line-height: 1.5;
+  }
+  
+  .no-print {
+    display: none;
+  }
+  
+  a::after {
+    content: " (" attr(href) ")";
+  }
+  
+  h1, h2, h3 {
+    page-break-after: avoid;
+  }
+  
+  img {
+    max-width: 100%;
+    page-break-inside: avoid;
+  }
+}
+
+/* ===== LUXURY GOLD FOIL EFFECTS ===== */
+
+.gold-foil-text {
+  background: linear-gradient(135deg, #B8860B 0%, #DAA520 15%, #FFD700 30%, #FFF8DC 45%, #FFD700 60%, #DAA520 85%, #B8860B 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.5), 0 0 40px rgba(218, 165, 32, 0.3), 2px 2px 4px rgba(139, 69, 19, 0.4);
+  filter: drop-shadow(2px 2px 4px rgba(139, 69, 19, 0.6)) drop-shadow(0 0 10px rgba(255, 215, 0, 0.4));
+  position: relative;
+}
+
+.gold-foil-text::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: linear-gradient(135deg, #FFF8DC 0%, #FFFFE0 50%, #FFF8DC 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 0;
+  animation: goldShimmer 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes goldShimmer {
+  0%, 100% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  50% {
+    opacity: 0.3;
+    transform: translateX(0);
+  }
+}
+
+.gold-foil-accent {
+  background: linear-gradient(135deg, #B8860B 0%, #DAA520 25%, #FFD700 50%, #DAA520 75%, #B8860B 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(1px 1px 2px rgba(139, 69, 19, 0.5));
+}
+
+/* Wedding Color Palette Variables */
+:root {
+  /* Primary Colors */
+  --hot-pink: #D64091;
+  --gold: #E0A448;
+  --deep-red: #BB3B24;
+  --cream: #F5D7AC;
+  
+  /* Color Variations */
+  --hot-pink-light: rgba(214, 64, 145, 0.1);
+  --hot-pink-medium: rgba(214, 64, 145, 0.2);
+  --gold-light: rgba(224, 164, 72, 0.1);
+  --deep-red-light: rgba(187, 59, 36, 0.1);
+  --cream-light: rgba(245, 215, 172, 0.5);
+  
+  /* Shadows and Effects */
+  --shadow-pink: rgba(214, 64, 145, 0.2);
+  --shadow-gold: rgba(224, 164, 72, 0.3);
+  --shadow-red: rgba(187, 59, 36, 0.2);
+  --shadow-default: rgba(0, 0, 0, 0.1);
+  
+  /* Gradients */
+  --gradient-pink: linear-gradient(135deg, #ffffff 0%, var(--hot-pink-light) 100%);
+  --gradient-gold: linear-gradient(135deg, var(--gold) 0%, #F4D03F 100%);
+  --gradient-cream: linear-gradient(135deg, var(--cream) 0%, #FAE5C1 100%);
+}
+
+/* Additional luxury gold effects */
+.gold-metallic {
+  background: linear-gradient(45deg, #B8860B 0%, #DAA520 25%, #FFD700 50%, #FFF8DC 75%, #FFD700 100%);
+  background-size: 200% 200%;
+  animation: goldMetallic 3s ease-in-out infinite;
+}
+
+@keyframes goldMetallic {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }
