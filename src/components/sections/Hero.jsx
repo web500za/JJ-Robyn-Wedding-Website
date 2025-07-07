@@ -47,13 +47,13 @@ const Hero = () => {
         />
       </motion.div>
 
-      {/* Oak Trees - Mobile: Smaller decorative elements */}
+      {/* Oak Trees - Mobile: Centered framing like desktop */}
       <motion.div
-        className="lg:hidden absolute top-8 left-4 max-w-20 opacity-40"
-        style={{ filter: 'drop-shadow(0 2px 6px rgba(224, 164, 72, 0.2))', zIndex: 1 }}
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 0.4, scale: 1 }}
-        transition={{ duration: 1, delay: 0.5 }}
+        className="lg:hidden absolute left-2 top-1/2 -translate-y-1/2 max-w-32 opacity-50"
+        style={{ filter: 'drop-shadow(0 3px 8px rgba(224, 164, 72, 0.25))', zIndex: 1 }}
+        initial={{ opacity: 0, x: -20, scale: 0.9 }}
+        animate={{ opacity: 0.5, x: 0, scale: 1 }}
+        transition={{ duration: 1.2, delay: 0.4 }}
       >
         <OptimizedImage
           src="/images/oak-left.png"
@@ -64,29 +64,14 @@ const Hero = () => {
       </motion.div>
       
       <motion.div
-        className="lg:hidden absolute top-8 right-4 max-w-20 opacity-40"
-        style={{ filter: 'drop-shadow(0 2px 6px rgba(224, 164, 72, 0.2))', zIndex: 1 }}
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 0.4, scale: 1 }}
-        transition={{ duration: 1, delay: 0.5 }}
+        className="lg:hidden absolute right-2 top-1/2 -translate-y-1/2 max-w-32 opacity-50"
+        style={{ filter: 'drop-shadow(0 3px 8px rgba(224, 164, 72, 0.25))', zIndex: 1 }}
+        initial={{ opacity: 0, x: 20, scale: 0.9 }}
+        animate={{ opacity: 0.5, x: 0, scale: 1 }}
+        transition={{ duration: 1.2, delay: 0.4 }}
       >
         <OptimizedImage
           src="/images/oak-right.png"
-          alt="Decorative oak tree illustration"
-          className="w-full h-auto"
-          placeholder="Loading..."
-        />
-      </motion.div>
-
-      <motion.div
-        className="lg:hidden absolute bottom-8 left-1/2 -translate-x-1/2 max-w-24 opacity-30"
-        style={{ filter: 'drop-shadow(0 2px 6px rgba(224, 164, 72, 0.2))', zIndex: 1 }}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 0.3, y: 0 }}
-        transition={{ duration: 1, delay: 0.7 }}
-      >
-        <OptimizedImage
-          src="/images/oak-left.png"
           alt="Decorative oak tree illustration"
           className="w-full h-auto"
           placeholder="Loading..."
