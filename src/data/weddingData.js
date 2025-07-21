@@ -28,20 +28,19 @@ export const weddingInfo = {
 };
 
 export const scheduleEvents = [
-  { time: '2:00 PM', title: 'Guest Arrival & Welcome Drinks' },
-  { time: '4:00 PM', title: 'Wedding Ceremony' },
-  { time: '5:00 PM', title: 'Cocktail Hour & Photography' },
-  { time: '6:30 PM', title: 'Reception & Dinner' },
-  { time: '9:00 PM', title: 'Dancing & Celebration' },
-  { time: '12:00 AM', title: 'Send-off' }
+  { time: '2:00 PM', title: 'Guest Arrival' },
+  { time: '3:00 PM', title: 'Hard Cut-off' },
+  { time: '4:00 PM', title: 'We Say I Do' },
+  { time: '5:00 PM', title: 'We Drink' },
+  { time: '7:00 PM', title: 'We Eat' },
+  { time: '9:00 PM', title: 'We Dance' },
+  { time: '12:00 AM', title: 'We Go Home' }
 ];
 
 export const navigationItems = [
   { name: 'Home', id: 'hero' },
   { name: 'RSVP', id: 'rsvp' },
   { name: 'Registry', id: 'registry' },
-  { name: 'Travel', id: 'travel' },
-  { name: 'Schedule', id: 'schedule' },
   { name: 'Dress Code', id: 'dress-code' }
 ];
 

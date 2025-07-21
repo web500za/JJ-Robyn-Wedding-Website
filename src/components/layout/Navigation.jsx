@@ -1,163 +1,211 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { weddingInfo, navigationItems } from '../../data/weddingData';
+import { useScrollToSection } from '../../hooks/useScrollToSection';
 
-function Navigation() {
+const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
+  const scrollToSection = useScrollToSection();
 
-  // Handle keyboard navigation
   useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === 'Escape' && isOpen) {
-        setIsOpen(false);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+      
+      // Update active section based on scroll position
+      const sections = navigationItems.map(item => item.id);
+      const currentSection = sections.find(section => {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          return rect.top <= 100 && rect.bottom >= 100;
+        }
+        return false;
+      });
+      
+      if (currentSection) {
+        setActiveSection(currentSection);
       }
     };
 
-    document.addEventListener('keydown', handleKeyDown);
-    return () => document.removeEventListener('keydown', handleKeyDown);
-  }, [isOpen]);
-
-  // Track active section for accessibility
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
-
-    const sections = document.querySelectorAll('section[id]');
-    sections.forEach((section) => observer.observe(section));
-
-    return () => observer.disconnect();
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const menuItems = [
-    { name: 'Home', id: 'hero' },
-    { name: 'Schedule', id: 'schedule' },
-    { name: 'Travel', id: 'travel' },
-    { name: 'Registry', id: 'registry' },
-    { name: 'RSVP', id: 'rsvp' },
-    { name: 'Dress Code', id: 'dress-code' }
-  ];
-
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      setIsOpen(false);
-      // Announce navigation for screen readers
-      const announcement = `Navigating to ${menuItems.find(item => item.id === sectionId)?.name} section`;
-      const announcer = document.createElement('div');
-      announcer.setAttribute('aria-live', 'polite');
-      announcer.setAttribute('aria-atomic', 'true');
-      announcer.className = 'sr-only';
-      announcer.textContent = announcement;
-      document.body.appendChild(announcer);
-      setTimeout(() => document.body.removeChild(announcer), 1000);
-    }
+  const handleNavClick = (sectionId) => {
+    scrollToSection(sectionId);
+    setIsOpen(false);
   };
 
   return (
-    <nav 
-      className="fixed top-0 w-full bg-cream/95 backdrop-blur-sm z-50"
-      role="navigation"
-      aria-label="Main navigation"
-    >
-      <div className="max-w-6xl mx-auto flex justify-between items-center px-8 py-4">
-        <button
-          className="text-2xl font-serif text-brown font-semibold tracking-wide bg-transparent border-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-pink focus:ring-offset-2 rounded"
-          onClick={() => scrollToSection('hero')}
-          aria-label="Go to top of page - Robyn and Jared's wedding"
-        >
-          R & J
-        </button>
-        {/* Desktop Navigation */}
-        <ul className="hidden md:flex gap-10 list-none m-0 p-0" role="menubar">
-          {menuItems.map((item) => (
-            <li key={item.id} role="none">
-              <button
-                className={`bg-transparent border-none text-base font-medium font-sans tracking-wide cursor-pointer transition-all duration-200 px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-pink focus:ring-offset-2 ${
-                  activeSection === item.id 
-                    ? 'text-pink border-b-2 border-pink' 
-                    : 'text-brown hover:text-pink'
-                }`}
-                onClick={() => scrollToSection(item.id)}
-                role="menuitem"
-                aria-current={activeSection === item.id ? 'page' : undefined}
-                aria-label={`Navigate to ${item.name} section`}
-              >
-                {item.name}
-              </button>
-            </li>
-          ))}
-        </ul>
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden text-2xl text-brown focus:outline-none focus:ring-2 focus:ring-pink focus:ring-offset-2 rounded p-2"
-          onClick={() => setIsOpen(!isOpen)}
-          aria-expanded={isOpen}
-          aria-controls="mobile-menu"
-          aria-label={isOpen ? 'Close menu' : 'Open menu'}
-        >
-          <motion.span
-            animate={{ rotate: isOpen ? 90 : 0 }}
-            transition={{ duration: 0.2 }}
-            className="block"
-          >
-            {isOpen ? '×' : '≡'}
-          </motion.span>
-        </button>
-      </div>
-      {/* Mobile Navigation */}
+    <>
+      <motion.nav 
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+          scrolled ? 'py-2' : 'py-4'
+        }`}
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        style={{
+          background: scrolled ? 'linear-gradient(135deg, rgba(230, 215, 195, 0.95) 0%, rgba(212, 196, 168, 0.95) 100%)' : 'transparent',
+          backdropFilter: scrolled ? 'blur(10px)' : 'none',
+          borderBottom: scrolled ? '1px solid rgba(187, 59, 36, 0.1)' : 'none'
+        }}
+      >
+        <div className="max-w-7xl mx-auto px-4 lg:px-8">
+          <div className="flex items-center justify-between">
+            {/* Logo/Names */}
+            <motion.button
+              onClick={() => handleNavClick('hero')}
+              className="text-2xl font-light tracking-wide"
+              style={{
+                fontFamily: "'Playfair Display', serif",
+                color: scrolled ? '#BB3B24' : '#F5D7AC'
+              }}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              {weddingInfo.couple.bride[0]} & {weddingInfo.couple.groom[0]}
+            </motion.button>
+
+            {/* Desktop Navigation */}
+            <div className="hidden lg:flex items-center space-x-8">
+              {navigationItems.map((item) => (
+                <motion.button
+                  key={item.id}
+                  onClick={() => handleNavClick(item.id)}
+                  className={`relative text-sm tracking-wider font-light transition-colors duration-300 ${
+                    activeSection === item.id ? 'text-[#E0A448]' : (scrolled ? 'text-[#BB3B24]' : 'text-[#F5D7AC]')
+                  }`}
+                  whileHover={{ y: -2 }}
+                  whileTap={{ y: 0 }}
+                >
+                  {item.name.toUpperCase()}
+                  
+                  {/* Active indicator */}
+                  {activeSection === item.id && (
+                    <motion.div
+                      className="absolute -bottom-1 left-0 right-0 h-px bg-[#E0A448]"
+                      layoutId="activeIndicator"
+                      transition={{
+                        type: "spring",
+                        stiffness: 380,
+                        damping: 30
+                      }}
+                    />
+                  )}
+                </motion.button>
+              ))}
+            </div>
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="lg:hidden relative w-8 h-8 flex items-center justify-center"
+              aria-label="Toggle menu"
+            >
+              <div className="relative w-6 h-4">
+                <motion.span
+                  className={`absolute left-0 w-full h-0.5 ${scrolled ? 'bg-[#BB3B24]' : 'bg-[#F5D7AC]'}`}
+                  animate={{
+                    rotate: isOpen ? 45 : 0,
+                    y: isOpen ? 8 : 0
+                  }}
+                  transition={{ duration: 0.3 }}
+                />
+                <motion.span
+                  className={`absolute left-0 top-1/2 -translate-y-1/2 w-full h-0.5 ${scrolled ? 'bg-[#BB3B24]' : 'bg-[#F5D7AC]'}`}
+                  animate={{
+                    opacity: isOpen ? 0 : 1,
+                    x: isOpen ? 20 : 0
+                  }}
+                  transition={{ duration: 0.3 }}
+                />
+                <motion.span
+                  className={`absolute left-0 bottom-0 w-full h-0.5 ${scrolled ? 'bg-[#BB3B24]' : 'bg-[#F5D7AC]'}`}
+                  animate={{
+                    rotate: isOpen ? -45 : 0,
+                    y: isOpen ? -8 : 0
+                  }}
+                  transition={{ duration: 0.3 }}
+                />
+              </div>
+            </button>
+          </div>
+        </div>
+      </motion.nav>
+
+      {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div 
-            id="mobile-menu"
-            className="md:hidden flex flex-col bg-cream px-8 py-4"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            role="menu"
-            aria-label="Mobile navigation menu"
+            className="fixed inset-0 z-40 lg:hidden"
           >
-            {menuItems.map((item, index) => (
-              <motion.button
-                key={item.id}
-                className={`text-base font-medium font-sans py-3 px-2 text-left transition-all duration-200 rounded focus:outline-none focus:ring-2 focus:ring-pink focus:ring-offset-2 ${
-                  activeSection === item.id 
-                    ? 'text-pink bg-pink/10' 
-                    : 'text-brown hover:text-pink hover:bg-pink/5'
-                }`}
-                onClick={() => scrollToSection(item.id)}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
-                role="menuitem"
-                aria-current={activeSection === item.id ? 'page' : undefined}
-                aria-label={`Navigate to ${item.name} section`}
-              >
-                {item.name}
-              </motion.button>
-            ))}
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="absolute inset-0 bg-black/20 backdrop-blur-sm"
+              onClick={() => setIsOpen(false)}
+            />
+
+            {/* Menu Panel */}
+            <motion.div
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+              className="absolute right-0 top-0 h-full w-3/4 max-w-sm bg-white shadow-2xl"
+            >
+              <div className="flex flex-col h-full pt-20 px-8">
+                {/* Menu Items */}
+                <div className="flex-1 space-y-1">
+                  {navigationItems.map((item, index) => (
+                    <motion.button
+                      key={item.id}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                      onClick={() => handleNavClick(item.id)}
+                      className={`block w-full text-left py-4 text-lg font-light tracking-wide transition-colors ${
+                        activeSection === item.id ? 'text-[#E0A448]' : 'text-[#BB3B24]'
+                      }`}
+                    >
+                      {item.name}
+                      
+                      {/* Active indicator for mobile */}
+                      {activeSection === item.id && (
+                        <motion.div
+                          className="mt-1 h-px bg-[#E0A448] w-8"
+                          layoutId="mobileActiveIndicator"
+                        />
+                      )}
+                    </motion.button>
+                  ))}
+                </div>
+
+                {/* Footer Info */}
+                <div className="py-8 border-t border-[#BB3B24]/10">
+                  <p className="text-sm text-[#BB3B24] opacity-60">
+                    {weddingInfo.date.full}
+                  </p>
+                  <p className="text-sm text-[#BB3B24] opacity-60 mt-1">
+                    {weddingInfo.venue.location}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
-      
-      {/* Screen reader only skip link */}
-      <a 
-        href="#main-content" 
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-pink text-white px-4 py-2 rounded z-50"
-      >
-        Skip to main content
-      </a>
-    </nav>
+    </>
   );
-}
+};
 
 export default Navigation;

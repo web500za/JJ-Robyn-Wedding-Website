@@ -1,15 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Custom border width for photo */
+.border-3 {
+  border-width: 3px;
+}
+
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background-color: var(--cream);
+  background-color: #ffffff;
   color: var(--deep-red);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  line-height: 1.6;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -110,34 +119,44 @@ section {
   overflow: hidden;
 }
 
-/* Section-specific backgrounds - simplified */
+/* Section-specific backgrounds - refined */
 .hero-section {
-  background: var(--cream);
+  background: #BB3B24;
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
+/* Removed grain texture effect */
+
 .schedule-section {
-  background: #F5D7AC;
+  background: linear-gradient(135deg, #FDF8F3 0%, #ffffff 100%);
+  position: relative;
 }
 
 .travel-section {
-  background: var(--cream);
+  background: linear-gradient(135deg, #ffffff 0%, #FDF8F3 100%);
+  position: relative;
 }
 
 .registry-section {
-  background: #D64091;
+  background: linear-gradient(135deg, #D64091 0%, #C73682 100%);
+  position: relative;
 }
 
 .rsvp-section {
   background: #BB3B24;
+  position: relative;
 }
 
 .dresscode-section {
-  background: #E0A448;
+  background: linear-gradient(135deg, #E0A448 0%, #D1973F 100%);
+  position: relative;
 }
+
+/* Removed subtle texture overlay that was causing visual issues */
 
 @media (max-width: 768px) {
   section {
@@ -368,12 +387,10 @@ html {
 
 @keyframes goldShimmer {
   0%, 100% {
-    opacity: 0;
-    transform: translateX(-100%);
+    background-position: 0% 50%;
   }
   50% {
-    opacity: 0.3;
-    transform: translateX(0);
+    background-position: 100% 50%;
   }
 }
 
@@ -392,6 +409,8 @@ html {
   --gold: #E0A448;
   --deep-red: #BB3B24;
   --cream: #F5D7AC;
+  --wedding-white: #FDF8F3;
+  --soft-blush: #F9F1E8;
   
   /* Color Variations */
   --hot-pink-light: rgba(214, 64, 145, 0.1);
@@ -400,16 +419,19 @@ html {
   --deep-red-light: rgba(187, 59, 36, 0.1);
   --cream-light: rgba(245, 215, 172, 0.5);
   
-  /* Shadows and Effects */
-  --shadow-pink: rgba(214, 64, 145, 0.2);
-  --shadow-gold: rgba(224, 164, 72, 0.3);
-  --shadow-red: rgba(187, 59, 36, 0.2);
-  --shadow-default: rgba(0, 0, 0, 0.1);
+  /* Wedding-specific shadows and effects */
+  --shadow-pink: rgba(214, 64, 145, 0.25);
+  --shadow-gold: rgba(224, 164, 72, 0.35);
+  --shadow-red: rgba(187, 59, 36, 0.25);
+  --shadow-romantic: rgba(214, 64, 145, 0.15);
+  --shadow-warm: rgba(224, 164, 72, 0.2);
   
-  /* Gradients */
-  --gradient-pink: linear-gradient(135deg, #ffffff 0%, var(--hot-pink-light) 100%);
-  --gradient-gold: linear-gradient(135deg, var(--gold) 0%, #F4D03F 100%);
-  --gradient-cream: linear-gradient(135deg, var(--cream) 0%, #FAE5C1 100%);
+  /* Wedding gradients */
+  --gradient-romantic: linear-gradient(135deg, var(--wedding-white) 0%, var(--soft-blush) 100%);
+  --gradient-pink: linear-gradient(135deg, var(--hot-pink) 0%, #C73682 100%);
+  --gradient-gold: linear-gradient(135deg, var(--gold) 0%, #D1973F 100%);
+  --gradient-cream: linear-gradient(135deg, var(--cream) 0%, #F0D196 100%);
+  --gradient-red: linear-gradient(135deg, var(--deep-red) 0%, #A53420 100%);
 }
 
 /* Additional luxury gold effects */
@@ -426,4 +448,64 @@ html {
   50% {
     background-position: 100% 50%;
   }
+}
+
+.text-texture {
+  background-image: url('/textures/ChatGPT Image Jul 7, 2025, 09_56_52 PM.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.gold-glow {
+  text-shadow:
+    0 0 8px rgba(224, 164, 72, 0.25),
+    0 0 24px rgba(224, 164, 72, 0.18),
+    0 2px 2px rgba(0,0,0,0.04);
+}
+
+.luxury-quote {
+  display: block;
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-family: 'Hatton', serif;
+  font-weight: 700;
+  color: transparent;
+  background: url('/textures/ChatGPT Image Jul 7, 2025, 09_56_52 PM.png') center/cover no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  font-size: clamp(2.5rem, 7vw, 6rem);
+  line-height: 1.08;
+  letter-spacing: 0.01em;
+  word-break: keep-all;
+  white-space: pre-line;
+}
+.luxury-quote wbr {
+  display: none;
+}
+@media (max-width: 900px) {
+  .luxury-quote {
+    font-size: clamp(2rem, 8vw, 3.5rem);
+  }
+}
+@media (max-width: 600px) {
+  .luxury-quote {
+    font-size: clamp(1.2rem, 8vw, 2.2rem);
+  }
+}
+.luxury-quote {
+  /* Force break after SOUL */
+}
+.luxury-quote::after {
+  content: '';
+}
+.luxury-quote {
+  /* Use JS or CSS to force break after SOUL if needed */
 }

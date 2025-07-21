@@ -4,8 +4,11 @@ import { motion } from 'framer-motion';
 function SimpleRSVPForm() {
   const [formData, setFormData] = useState({
     name: '',
+    email: '',
     attending: null,
-    mealChoice: ''
+    mealChoice: '',
+    dietaryRequirements: '',
+    message: ''
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -28,7 +31,7 @@ function SimpleRSVPForm() {
     <form onSubmit={handleSubmit} className="space-y-6">
       <div>
         <label className="block text-sm font-medium mb-2 text-cream">
-          Name
+          Name <span className="text-xs text-cream/70 ml-1">(required)</span>
         </label>
         <input
           type="text"
@@ -37,6 +40,20 @@ function SimpleRSVPForm() {
           onChange={(e) => setFormData({...formData, name: e.target.value})}
           className="w-full px-4 py-3 bg-cream/20 border border-cream/30 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-cream/50 text-cream placeholder-cream/60"
           placeholder="Your name"
+        />
+      </div>
+
+      <div>
+        <label className="block text-sm font-medium mb-2 text-cream">
+          Email <span className="text-xs text-cream/70 ml-1">(required)</span>
+        </label>
+        <input
+          type="email"
+          required
+          value={formData.email}
+          onChange={(e) => setFormData({...formData, email: e.target.value})}
+          className="w-full px-4 py-3 bg-cream/20 border border-cream/30 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-cream/50 text-cream placeholder-cream/60"
+          placeholder="Your email address"
         />
       </div>
 
@@ -89,27 +106,65 @@ function SimpleRSVPForm() {
                   : 'bg-cream/20 text-cream border border-cream/30 hover:bg-cream/30'
               }`}
             >
-              Lamb
+              Lamb Shoulder
             </button>
             <button
               type="button"
-              onClick={() => setFormData({...formData, mealChoice: 'fish'})}
+              onClick={() => setFormData({...formData, mealChoice: 'beef'})}
               className={`px-6 py-3 rounded-lg transition-all duration-200 ${
-                formData.mealChoice === 'fish'
+                formData.mealChoice === 'beef'
                   ? 'bg-cream text-brown font-medium'
                   : 'bg-cream/20 text-cream border border-cream/30 hover:bg-cream/30'
               }`}
             >
-              Fish
+              Beef Ribeye
             </button>
           </div>
+        </motion.div>
+      )}
+
+      {formData.attending === true && (
+        <motion.div
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: 'auto' }}
+          transition={{ duration: 0.3, delay: 0.1 }}
+        >
+          <label className="block text-sm font-medium mb-3 text-cream">
+            Do you have any dietary requirements and allergies?
+          </label>
+          <textarea
+            value={formData.dietaryRequirements}
+            onChange={(e) => setFormData({...formData, dietaryRequirements: e.target.value})}
+            className="w-full px-4 py-3 bg-cream/20 border border-cream/30 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-cream/50 text-cream placeholder-cream/60 resize-none"
+            placeholder="Please let us know of any dietary requirements or allergies..."
+            rows="3"
+          />
+        </motion.div>
+      )}
+
+      {formData.attending !== null && (
+        <motion.div
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: 'auto' }}
+          transition={{ duration: 0.3, delay: 0.2 }}
+        >
+          <label className="block text-sm font-medium mb-3 text-cream">
+            Message to the couple (optional)
+          </label>
+          <textarea
+            value={formData.message}
+            onChange={(e) => setFormData({...formData, message: e.target.value})}
+            className="w-full px-4 py-3 bg-cream/20 border border-cream/30 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-cream/50 text-cream placeholder-cream/60 resize-none"
+            placeholder="Share your excitement, well wishes, or anything you'd like to tell us..."
+            rows="3"
+          />
         </motion.div>
       )}
 
       <div className="border-t border-cream/20 pt-6">
         <button
           type="submit"
-          disabled={!formData.name || formData.attending === null || (formData.attending && !formData.mealChoice)}
+          disabled={!formData.name || !formData.email || !/^\S+@\S+\.\S+$/.test(formData.email) || formData.attending === null || (formData.attending && !formData.mealChoice)}
           className="py-3 px-8 rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed font-medium"
           style={{ backgroundColor: '#E0A448', color: '#ffffff' }}
           onMouseEnter={(e) => e.target.style.backgroundColor = '#C8941F'}
@@ -124,7 +179,7 @@ function SimpleRSVPForm() {
 
 function RSVP() {
   return (
-    <section id="rsvp" className="rsvp-section py-16 px-8 text-center min-h-screen flex items-center justify-center">
+    <section id="rsvp" className="rsvp-section py-16 px-8 text-center h-screen flex items-center justify-center">
       <div className="max-w-2xl mx-auto">
         <motion.div
           className="mb-12"
@@ -137,7 +192,10 @@ function RSVP() {
             RSVP
           </h2>
           <p className="text-lg font-medium text-cream/90">
-            Please let us know if you'll be joining us
+            Please let us know if you'll be celebrating our special day with us
+          </p>
+          <p className="text-xl font-semibold text-cream italic mt-2">
+            RSVP Closes 17 October, 2025
           </p>
         </motion.div>
         

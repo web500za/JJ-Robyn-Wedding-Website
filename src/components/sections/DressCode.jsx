@@ -89,23 +89,14 @@ function DressCode() {
           </motion.div>
         </motion.div>
         {/* Practical advice in elegant gold styling */}
-        <motion.div
-          className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border max-w-3xl mx-auto"
-          style={{ borderColor: 'rgba(255, 255, 255, 0.2)' }}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <div className="text-center">
-            <h3 className="text-lg font-medium mb-3" style={{ color: '#FFFFFF' }}>
-              Weather Note
-            </h3>
-            <p className="text-base" style={{ color: '#FFFFFF', opacity: 0.9 }}>
-              February in Tulbagh: Warm days, cooler evenings. Bring a light jacket.
-            </p>
-          </div>
-        </motion.div>
+        <div className="text-center mt-8">
+          <h3 className="text-lg font-medium mb-3" style={{ color: '#FFFFFF' }}>
+            Weather Note
+          </h3>
+          <p className="text-base" style={{ color: '#FFFFFF', opacity: 0.9 }}>
+            February in Tulbagh: Warm days, cooler evenings. Bring a light jacket.
+          </p>
+        </div>
       </div>
     </section>
   );
