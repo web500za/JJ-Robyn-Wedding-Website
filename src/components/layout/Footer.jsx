@@ -29,7 +29,7 @@ function Footer() {
           </p>
         </motion.div>
 
-        {/* Names & Date */}
+        {/* Date Only */}
         <motion.div
           className="mb-8"
           initial={{ opacity: 0 }}
@@ -37,33 +37,12 @@ function Footer() {
           transition={{ delay: 0.4, duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <div className="flex items-center justify-center space-x-4 mb-3">
-            <div className="h-px bg-gradient-to-r from-transparent via-[#BB3B24] to-transparent w-16 opacity-40"></div>
-            <h3 className="text-2xl sm:text-3xl font-bold text-texture"
-                style={{ fontFamily: "'Hatton', serif" }}>
-              {weddingInfo.couple.bride} & {weddingInfo.couple.groom}
-            </h3>
-            <div className="h-px bg-gradient-to-l from-transparent via-[#BB3B24] to-transparent w-16 opacity-40"></div>
-          </div>
           <p className="text-base tracking-[0.2em] font-light"
              style={{ color: '#B8846B', fontFamily: 'Inter, sans-serif' }}>
             {weddingInfo.date.full}
           </p>
         </motion.div>
 
-        {/* Wedding Quote */}
-        <motion.div
-          className="mb-8"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.6, duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <blockquote className="text-sm sm:text-base tracking-[0.1em] font-light italic opacity-75"
-                      style={{ color: '#BB3B24', fontFamily: 'Inter, sans-serif' }}>
-            {weddingInfo.quote}
-          </blockquote>
-        </motion.div>
 
         {/* Venue */}
         <motion.div

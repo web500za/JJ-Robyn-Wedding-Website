@@ -121,7 +121,7 @@ section {
 
 /* Section-specific backgrounds - refined */
 .hero-section {
-  background: #BB3B24;
+  background: #E6D7C3;
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -400,6 +400,11 @@ html {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   filter: drop-shadow(1px 1px 2px rgba(139, 69, 19, 0.5));
+}
+
+/* Custom gradient utilities */
+.bg-gradient-radial {
+  background-image: radial-gradient(circle, var(--tw-gradient-stops));
 }
 
 /* Wedding Color Palette Variables */
